@@ -1,7 +1,7 @@
 import logging
 
 import ckan.plugins as p
-import ckanext.datapusher.logic.action as action
+import ckanext.datapusherext.logic.action as action
 import ckan.logic.action.update as core_update
 import ckanext.datapusherext.logic.auth as auth
 import ckanext.datapusherext.helpers as helpers

@@ -9,7 +9,7 @@ import requests
 import ckan.lib.navl.dictization_functions
 import ckan.logic as logic
 import ckan.plugins as p
-import ckanext.datapusher.logic.schema as dpschema
+import ckanext.datapusherext.logic.schema as dpschema
 
 log = logging.getLogger(__name__)
 _get_or_bust = logic.get_or_bust
