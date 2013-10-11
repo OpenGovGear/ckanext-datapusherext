@@ -9,7 +9,7 @@ import requests
 import ckan.lib.navl.dictization_functions
 import ckan.logic as logic
 import ckan.plugins as p
-import ckanext.datapusher.logic.schema as dpschema
+import ckanext.datapusherext.logic.schema as dpschema
 
 log = logging.getLogger(__name__)
 _get_or_bust = logic.get_or_bust
@@ -45,9 +45,8 @@ def datapusher_submit(context, data_dict):
 
     datapusher_url = pylons.config.get('ckan.datapusher.url')
 
-    callback_url = p.toolkit.url_for(
-        controller='api', action='action', logic_function='datapusher_hook',
-        ver=3, qualified=True)
+    callback_url = urlparse.urljoin(pylons.config['ckan.site_url'],
+        'api/3/action/datapusher_hook')
 
     user = p.toolkit.get_action('user_show')(context, {'id': context['user']})
 
