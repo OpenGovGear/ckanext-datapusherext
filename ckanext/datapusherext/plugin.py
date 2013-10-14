@@ -7,6 +7,7 @@ import ckanext.datapusherext.logic.auth as auth
 import ckanext.datapusherext.helpers as helpers
 import ckan.logic as logic
 import ckan.model as model
+import ckan.common as common
 
 log = logging.getLogger(__name__)
 _get_or_bust = logic.get_or_bust
@@ -69,6 +70,11 @@ class DatapusherPlugin(p.SingletonPlugin):
                 # 1 parameter
                 context = {'model': model, 'ignore_auth': True,
                            'defer_commit': True}
+                try:
+                    context.setdefault('user', common.c.user or common.c.author)
+                except TypeError:
+                    site_user = p.toolkit.get_action('get_site_user')(context, {})
+                    context.setdefault('user', site_user['name'])
 
                 package = entity.resource_group.package
 
