@@ -7,7 +7,7 @@ CKAN 2.2 will have this functionality built in.
 
 In order to use this the datapusher needs to be installed. See::
 
-https://github.com/okfn/datapusher
+https://github.com/ckan/datapusher
 
 To configure add
 
