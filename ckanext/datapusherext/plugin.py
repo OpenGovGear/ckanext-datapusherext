@@ -76,9 +76,7 @@ class DatapusherPlugin(p.SingletonPlugin):
                     site_user = p.toolkit.get_action('get_site_user')(context, {})
                     context.setdefault('user', site_user['name'])
 
-                package = entity.resource_group.package
-
-                if (not package.private and entity.format and
+                if (entity.format and
                     entity.format.lower() in self.datapusher_formats):
                     try:
                         p.toolkit.get_action('datapusher_submit')(context, {
